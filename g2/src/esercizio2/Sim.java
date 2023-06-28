@@ -2,19 +2,24 @@ package esercizio2;
 
 public class Sim {
 	public String numeroCel;
-	public float credito;
-	public String [] ultimeChiamate;
+	public double credito;
+	Chiamata[] ultimeChiamate;
 	
-	public Sim (String numeroCel, float credito, String [] ultimeChiamate) {
+	public Sim (String numeroCel) {
 		this.numeroCel = numeroCel;
-		this.credito = credito;
-		this.ultimeChiamate = ultimeChiamate;
+		this.credito = 0;
+		this.ultimeChiamate = new Chiamata[5];
 	}
 	
 	public void stampaSim () {
 		System.out.println("Numero : " + this.numeroCel);
 		System.out.println("Credito residuo : " + this.credito);
-		System.out.println("Ultime chiamate : " + this.ultimeChiamate);
+		System.out.println("Ultime chiamate : ");
+		for (int i = 0; i < ultimeChiamate.length; i++) {
+			if(ultimeChiamate[i] != null) {
+				System.out.println(ultimeChiamate[i].numeroChiamato + "durata: " + ultimeChiamate[i].durata);
+			}
+		}
 	}
 	
 }
