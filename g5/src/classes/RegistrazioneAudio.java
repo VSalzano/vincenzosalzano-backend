@@ -7,12 +7,12 @@ public class RegistrazioneAudio extends ElementoMultimediale implements IVolume 
 	public int volume;
 	public int durata;
 
-	public RegistrazioneAudio(String titolo, int durata) {
+	public RegistrazioneAudio(String titolo, int durata, int volume) {
 		super(titolo);
 		this.titolo = titolo;
 		this.durata = durata;
 		this.riproducibile = true;
-		this.volume = 2;
+		this.volume = volume;
 		
 	}
 	

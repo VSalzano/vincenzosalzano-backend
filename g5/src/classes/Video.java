@@ -10,12 +10,14 @@ public class Video extends ElementoMultimediale implements ILuminosita, IVolume 
 	public int luminosita;
 	
 
-	public Video(String titolo, int durata) {
+	public Video(String titolo,int volume, int luminosita, int durata) {
 		super(titolo);
 		this.durata = durata;
-		this.volume = 2;
+		this.volume = volume;
+		this.luminosita = luminosita;
+		this.volume = volume;
 		this.riproducibile = true;
-		this.luminosita = 2;		
+		this.luminosita = luminosita;		
 	}
 	
 	@Override

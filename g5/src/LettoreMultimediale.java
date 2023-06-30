@@ -9,27 +9,65 @@ public class LettoreMultimediale {
 
 	public static void main(String[] args) {
 		
-		System.out.println("La luminosità e il volume di default di tutti i file sono impostati a 2. È possibile aumentare e diminuire luminosità e volume con i rispettivi metodi");
 		
-		RegistrazioneAudio c1 = new RegistrazioneAudio("prima canzone", 4);
-		Immagine i1 = new Immagine ("foto compleanno");
-		Video v1 = new Video ("video vacanze", 3);
-		Immagine i2 = new Immagine ("foto laurea");
-		Video v2 = new Video ("video concerto", 4);
-		
+		Scanner scanner = new Scanner(System.in);
+
 		ElementoMultimediale[] archivio = new ElementoMultimediale[5];
-		archivio [0] = c1;
-		archivio [1] = i1;
-		archivio [2] = v1;
-		archivio [3] = i2;
-		archivio [4] = v2;
+
+		for (int i = 0; i < 5; i++) {
+		    System.out.println("Seleziona il tipo di elemento:");
+		    System.out.println("1. Immagine");
+		    System.out.println("2. Video");
+		    System.out.println("3. Registrazione Audio");
+		    System.out.print("Scelta: ");
+		    int scelta = scanner.nextInt();
+		    scanner.nextLine();
+
+		    System.out.print("Titolo: ");
+		    String titolo = scanner.nextLine();
+		    
+		    int luminosita = 0;
+
+		    if (scelta == 1 || scelta == 2) {
+		        System.out.print("Luminosità: ");
+		        luminosita = scanner.nextInt();
+		        scanner.nextLine();
+		    }
+
+		    switch (scelta) {
+		        case 1:
+		            archivio[i] = new Immagine(titolo, luminosita);
+		            break;
+		        case 2:
+		            System.out.print("Volume: ");
+		            int volume = scanner.nextInt();
+		            System.out.print("Durata: ");
+		            int durata = scanner.nextInt();
+		            scanner.nextLine();
+		            archivio[i] = new Video(titolo, luminosita, volume, durata);
+		            break;
+		        case 3:
+		            System.out.print("Volume: ");
+		            int volume1 = scanner.nextInt();
+		            System.out.print("Durata: ");
+		            int durata1 = scanner.nextInt();
+		            scanner.nextLine();
+		            archivio[i] = new RegistrazioneAudio(titolo, volume1, durata1);
+		            break;
+		        default:
+		            System.out.println("Scelta non valida.");
+		            i--;
+		    }
+		}
+
+
 		
 	    Scanner sc = new Scanner(System.in);
 	    System.out.println("Digita un numero qualsiasi per avviare il player:");
 	    int elementoScelto = sc.nextInt();
 	    
 	    do {
-	        System.out.println("Scegli un elemento da 1 a " + archivio.length + " (oppure inserisci 0 per uscire): ");
+	        System.out.println("Scegli un elemento da 1 a " + archivio.length + "(oppure inserisci 0 per uscire): ");
 	        elementoScelto = sc.nextInt();
 	        
 	        if (elementoScelto >= 1 && elementoScelto <= 5) {

@@ -6,12 +6,12 @@ public class Immagine extends ElementoMultimediale implements ILuminosita {
 	
 	public int luminosita;
 
-	public Immagine(String titolo) {
+	public Immagine(String titolo, int luminosita) {
 		super(titolo);
 		
 		this.titolo = titolo;
 		this.riproducibile = false;
-		this.luminosita = 2;
+		this.luminosita = luminosita;
 	}
 	
 	@Override
