@@ -1,0 +1,28 @@
+2023-07-04 14:27:18,207 [main] INFO  s2g2.MainE1 - Inserisci le parole:
+2023-07-04 14:27:24,532 [main] INFO  s2g2.MainE1 - Parole duplicate:
+2023-07-04 14:27:24,532 [main] INFO  s2g2.MainE1 - Numero di parole distinte: 3
+2023-07-04 14:27:24,532 [main] INFO  s2g2.MainE1 - Elenco delle parole distinte:
+2023-07-04 14:27:24,532 [main] INFO  s2g2.MainE1 - addio
+2023-07-04 14:27:24,532 [main] INFO  s2g2.MainE1 - ciao
+2023-07-04 14:27:24,533 [main] INFO  s2g2.MainE1 - arrivederci
+2023-07-04 14:27:51,855 [main] INFO  s2g2.MainE1 - Inserisci le parole:
+2023-07-04 14:27:55,124 [main] INFO  s2g2.MainE1 - Parole duplicate:
+2023-07-04 14:27:55,124 [main] INFO  s2g2.MainE1 - Numero di parole distinte: 2
+2023-07-04 14:27:55,124 [main] INFO  s2g2.MainE1 - Elenco delle parole distinte:
+2023-07-04 14:27:55,125 [main] INFO  s2g2.MainE1 - amici
+2023-07-04 14:27:55,126 [main] INFO  s2g2.MainE1 - ciao
+2023-07-04 14:31:23,966 [main] INFO  s2g2.MainE1 - Inserisci le parole:
+2023-07-04 14:31:26,051 [main] INFO  s2g2.MainE1 - Parole duplicate:
+2023-07-04 14:31:26,052 [main] INFO  s2g2.MainE1 - Numero di parole distinte: 1
+2023-07-04 14:31:26,052 [main] INFO  s2g2.MainE1 - Elenco delle parole distinte:
+2023-07-04 14:31:26,052 [main] INFO  s2g2.MainE1 - ciao
+2023-07-04 14:46:28,284 [main] INFO  s2g2.MainE2 - Lista casuale: [8, 25, 38, 52, 54, 56, 62, 63, 70, 91]
+2023-07-04 14:46:28,289 [main] INFO  s2g2.MainE2 - Lista invertita: [91, 70, 63, 62, 56, 54, 52, 38, 25, 8, 8, 25, 38, 52, 54, 56, 62, 63, 70, 91]
+2023-07-04 14:57:53,779 [main] INFO  s2g2.MainE3 - Telefono di Luigi: 0987654321
+2023-07-04 14:57:53,785 [main] INFO  s2g2.MainE3 - Persona con telefono 9876543210: Maria
+2023-07-04 14:59:20,342 [main] INFO  s2g2.MainE3 - Ricerca per nome: 2223334455
+2023-07-04 14:59:20,348 [main] INFO  s2g2.MainE3 - Ricerca per numero: Maria
+2023-07-04 15:11:08,589 [main] INFO  s2g2.MainE3 - Ricerca per nome: 2223334455
+2023-07-04 15:11:08,595 [main] INFO  s2g2.MainE3 - Ricerca per numero: Maria
+2023-07-04 15:12:32,414 [main] INFO  s2g2.MainE3 - Ricerca per nome: 2223334455
+2023-07-04 15:12:32,420 [main] INFO  s2g2.MainE3 - Ricerca per numero: Alfonso
