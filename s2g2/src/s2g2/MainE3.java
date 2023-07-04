@@ -4,10 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import classes.Rubrica;
+import classes.RubricaException;
 
 public class MainE3 {
 		
-		public static void main(String[] args) {
+		public static void main(String[] args) throws RubricaException {
 			Logger log = LoggerFactory.getLogger(MainE3.class);
 	        Rubrica rubrica = new Rubrica();
 
@@ -22,7 +23,7 @@ public class MainE3 {
 	        log.info("Ricerca per nome: " + rubrica.ricercaTelefono("Luigi"));
 	        log.info("Ricerca per numero: " + rubrica.ricercaPersona("3334445566"));
 
-	        rubrica.cancellaContatto("Mario");
+	        rubrica.cancellaContatto("Alfonso");
 
 	        rubrica.stampaRubrica();
 	    }

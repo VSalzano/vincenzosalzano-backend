@@ -2,6 +2,7 @@ package classes;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Rubrica {
 
@@ -11,21 +12,32 @@ public class Rubrica {
         rubrica = new HashMap<>();
     }
 
-    public void inserisciContatto(String nome, String telefono) {
-        rubrica.put(nome, telefono);
+    public void inserisciContatto(String nome, String telefono) throws RubricaException {
+		if(rubrica.containsKey(nome)) {
+			throw new RubricaException ("Numero già presente in rubrica");
+		} else {
+			rubrica.put(nome, telefono);
+			System.out.println("Contatto aggiunto in rubrica!");
+		}
     }
 
-    public void cancellaContatto(String nome) {
-        rubrica.remove(nome);
+    public void cancellaContatto(String nome) throws RubricaException {
+		if(rubrica.containsKey(nome)) {
+			rubrica.remove(nome);
+			System.out.println("Contatto rimosso dalla rubrica!");
+		} else {
+			throw new RubricaException ("Chiave NON presente nella rubrica!!!");
+		}
     }
 
     public String ricercaPersona(String telefono) {
-        for (Map.Entry<String, String> entry : rubrica.entrySet()) {
-            if (entry.getValue().equals(telefono)) {
-                return entry.getKey();
-            }
-        }
-        return null;
+		Set<String> key = rubrica.keySet();
+		for (String k : key) {
+			if(telefono.equals(rubrica.get(k))) {
+				return k;
+			}
+		}
+		return null;
     }
 
     public String ricercaTelefono(String nome) {
@@ -33,9 +45,10 @@ public class Rubrica {
     }
 
     public void stampaRubrica() {
-        System.out.println("Contatti nella rubrica:");
-        for (Map.Entry<String, String> entry : rubrica.entrySet()) {
-            System.out.println("Nome: " + entry.getKey() + ", Telefono: " + entry.getValue());
-        }
-    }
+		System.out.println("Lista contatti:");
+	    Set<String> key = rubrica.keySet();
+	    for (String k : key) {
+			System.out.println("Nome: " + k + " Numero: " + rubrica.get(k));
+		}
+	}
 }
