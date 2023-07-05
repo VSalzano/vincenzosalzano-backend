@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import threads.NumThread1;
-import threads.NumThread2;
-import threads.NumThread3;
 
 public class MainE2 {
 	
@@ -17,8 +15,8 @@ public class MainE2 {
 		
 		
 		NumThread1 t1 = new NumThread1();
-		NumThread2 t2 = new NumThread2();
-		NumThread3 t3 = new NumThread3();
+		NumThread1 t2 = new NumThread1();
+		NumThread1 t3 = new NumThread1();
 		
 		t1.start();
 		t1.join();
