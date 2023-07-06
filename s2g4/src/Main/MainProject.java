@@ -29,17 +29,17 @@ public class MainProject {
         Product prod11 = new Product(11, "Scarpe", "boys", 50.0);
         
         Order order1 = new Order(1, "Pending", LocalDate.now(), LocalDate.now().plusDays(3),
-                List.of(prod1, prod2), new Customer(1, "John Doe", 1));
+                List.of(prod1, prod2), new Customer(1, "Mario Rossi", 1));
         Order order2 = new Order(2, "Delivered", LocalDate.now().minusDays(5), LocalDate.now().minusDays(2),
-                List.of(prod3), new Customer(2, "Jane Smith", 2));
+                List.of(prod3), new Customer(2, "Luca Neri", 2));
         Order order3 = new Order(3, "Pending", LocalDate.now().minusDays(2), LocalDate.now().plusDays(1),
                 List.of(prod2, prod8), new Customer(3, "Michael Johnson", 1));
         Order order4 = new Order(4, "Delivered", LocalDate.now().minusDays(7), LocalDate.now().minusDays(3),
-                List.of(prod10), new Customer(4, "Emily Davis", 3));
+                List.of(prod10), new Customer(4, "Marco Bianchi", 3));
         Order order5 = new Order(5, "Delivered", LocalDate.of(2021, 2, 3), LocalDate.now().minusDays(3),
-                List.of(prod7), new Customer(4, "Davide Aprea", 2));
+                List.of(prod7, prod9), new Customer(4, "Davide Aprea", 2));
         Order order6 = new Order(6, "Delivered", LocalDate.of(2021, 3, 15), LocalDate.now().minusDays(3),
-                List.of(prod4), new Customer(4, "Vincenzo Salzano", 2));
+                List.of(prod4, prod5), new Customer(4, "Vincenzo Salzano", 2));
         
         productList.add(prod1);
         productList.add(prod2);
