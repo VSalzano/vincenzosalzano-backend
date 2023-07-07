@@ -1,11 +1,18 @@
 package Main;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -65,7 +72,8 @@ public class MainProject {
 		salvaSuFile();
 		caricaDaFile();
 		
-	    archivio.forEach(v -> System.out.println(v));
+		System.out.println(caricaDaFile());
+	
 
 		
 		
@@ -133,32 +141,45 @@ public class MainProject {
 	}
 	
 	public static void salvaSuFile() throws IOException {
-	    String txt = "";
+	    Map<String, Volume> archivioMap = new HashMap<>();
+
 	    for (Volume vol : archivio) {
 	        if (vol instanceof Libro) {
 	            Libro libro = (Libro) vol;
-	            txt += libro.getCodiceISBN() + "@" + libro.getTitolo() + "@" + libro.getAutore() + "@" + libro.getGenere() + "@" + libro.getAnnoPubblicazione() + "@" + libro.getNumeroPagine() +"#";
+	            archivioMap.put(libro.getCodiceISBN(), libro);
 	        } else if (vol instanceof Rivista) {
 	            Rivista rivista = (Rivista) vol;
-	            txt += rivista.getCodiceISBN() + "@" + rivista.getTitolo() + "@" + rivista.getAnnoPubblicazione() + "@" + rivista.getNumeroPagine() + "@" + rivista.getPeriodicita() + "#";
+	            archivioMap.put(rivista.getCodiceISBN(), rivista);
 	        }
 	    }
-	    
-	    FileUtils.writeStringToFile(file, txt, "UTF-8", true);
+
+	    try (PrintWriter writer = new PrintWriter(file, "UTF-8")) {
+	        for (Map.Entry<String, Volume> entry : archivioMap.entrySet()) {
+	            String key = entry.getKey();
+	            Volume volume = entry.getValue();
+
+	            if (volume instanceof Libro) {
+	                Libro libro = (Libro) volume;
+	                String line = libro.getCodiceISBN() + "@" + libro.getTitolo() + "@" + libro.getAutore() + "@" + libro.getGenere() + "@" + libro.getAnnoPubblicazione() + "@" + libro.getNumeroPagine();
+	                writer.println(line);
+	            } else if (volume instanceof Rivista) {
+	                Rivista rivista = (Rivista) volume;
+	                String line = rivista.getCodiceISBN() + "@" + rivista.getTitolo() + "@" + rivista.getAnnoPubblicazione() + "@" + rivista.getNumeroPagine() + "@" + rivista.getPeriodicita();
+	                writer.println(line);
+	            }
+	        }
+	    }
+
 	    log.info("Testo scritto su file " + file.getPath());
 	}
-	
-	public static List<Volume> caricaDaFile() throws IOException {
-	    archivio.clear();
 
-	    String textFile = FileUtils.readFileToString(file, "UTF-8");
+	public static Map<String, Volume> caricaDaFile() throws IOException {
+	    Map<String, Volume> archivioMap = new HashMap<>();
 
-	    System.out.println(textFile);
+	    List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
 
-	    String[] entries = textFile.split("#");
-
-	    for (String entry : entries) {
-	        String[] properties = entry.split("@");
+	    for (String line : lines) {
+	        String[] properties = line.split("@");
 
 	        if (properties.length == 6) {
 	            String codiceISBN = properties[0];
@@ -169,7 +190,7 @@ public class MainProject {
 	            int numeroPagine = Integer.parseInt(properties[5]);
 
 	            Volume volume = new Libro(codiceISBN, titolo, autore, genere, annoPubblicazione, numeroPagine);
-	            archivio.add(volume);
+	            archivioMap.put(codiceISBN, volume);
 	        } else if (properties.length == 5) {
 	            String codiceISBN = properties[0];
 	            String titolo = properties[1];
@@ -178,11 +199,11 @@ public class MainProject {
 	            Periodicita periodicita = Periodicita.valueOf(properties[4]);
 
 	            Volume volume = new Rivista(codiceISBN, titolo, annoPubblicazione, numeroPagine, periodicita);
-	            archivio.add(volume);
+	            archivioMap.put(codiceISBN, volume);
 	        }
 	    }
 
-	    return archivio;
+	    return archivioMap;
 	}
 	
 	
