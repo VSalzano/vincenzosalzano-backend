@@ -4,10 +4,7 @@ import java.time.Year;
 
 public class Rivista extends Volume {
 	
-	@Override
-	public String toString() {
-		return "Rivista [titolo=" + titolo + "]";
-	}
+
 
 	private Periodicita periodicita;
 
@@ -23,6 +20,17 @@ public class Rivista extends Volume {
 
 	public void setPeriodicita(Periodicita periodicita) {
 		this.periodicita = periodicita;
+	}
+	
+	@Override
+	public String toString() {
+	    return "Rivista{" +
+	            "codiceISBN='" + getCodiceISBN() + '\'' +
+	            ", titolo='" + getTitolo() + '\'' +
+	            ", annoPubblicazione=" + getAnnoPubblicazione() +
+	            ", numeroPagine=" + getNumeroPagine() +
+	            ", periodicita=" + getPeriodicita() +
+	            '}';
 	}
 	
 	

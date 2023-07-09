@@ -4,10 +4,7 @@ import java.time.Year;
 
 public class Libro extends Volume {
 	
-	@Override
-	public String toString() {
-		return "Libro [autore=" + autore + ", genere=" + genere + "]";
-	}
+
 
 	private String autore;
 	private String genere;
@@ -35,6 +32,17 @@ public class Libro extends Volume {
 	public void setGenere(String genere) {
 		this.genere = genere;
 	}
-
+	
+	@Override
+	public String toString() {
+	    return "Libro{" +
+	            "codiceISBN='" + getCodiceISBN() + '\'' +
+	            ", titolo='" + getTitolo() + '\'' +
+	            ", autore='" + getAutore() + '\'' +
+	            ", genere='" + getGenere() + '\'' +
+	            ", annoPubblicazione=" + getAnnoPubblicazione() +
+	            ", numeroPagine=" + getNumeroPagine() +
+	            '}';
+	}
 	
 }
