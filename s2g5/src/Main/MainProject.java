@@ -140,6 +140,7 @@ public class MainProject {
 	    }
 	}
 	
+	
 	public static void salvaSuFile() throws IOException {
 	    Map<String, Volume> archivioMap = new HashMap<>();
 
@@ -150,23 +151,6 @@ public class MainProject {
 	        } else if (vol instanceof Rivista) {
 	            Rivista rivista = (Rivista) vol;
 	            archivioMap.put(rivista.getCodiceISBN(), rivista);
-	        }
-	    }
-
-	    try (PrintWriter writer = new PrintWriter(file, "UTF-8")) {
-	        for (Map.Entry<String, Volume> entry : archivioMap.entrySet()) {
-	            String key = entry.getKey();
-	            Volume volume = entry.getValue();
-
-	            if (volume instanceof Libro) {
-	                Libro libro = (Libro) volume;
-	                String line = libro.getCodiceISBN() + "@" + libro.getTitolo() + "@" + libro.getAutore() + "@" + libro.getGenere() + "@" + libro.getAnnoPubblicazione() + "@" + libro.getNumeroPagine();
-	                writer.println(line);
-	            } else if (volume instanceof Rivista) {
-	                Rivista rivista = (Rivista) volume;
-	                String line = rivista.getCodiceISBN() + "@" + rivista.getTitolo() + "@" + rivista.getAnnoPubblicazione() + "@" + rivista.getNumeroPagine() + "@" + rivista.getPeriodicita();
-	                writer.println(line);
-	            }
 	        }
 	    }
 
