@@ -1,9 +1,9 @@
-978-0987654321@National Geographic@1830@100@MENSILE
-978-8804682565@Harry Potter e la pietra filosofale@J.K. Rowling@Fantasy@1997@336
-978-5678901234@Science Quarterly@2010@80@SEMESTRALE
-978-8804668231@Il codice da Vinci@Dan Brown@Thriller@2003@592
-978-8808180157@1984@George Orwell@Romanzo distopico@1949@328
-978-2468135790@Tech Trends@1999@48@MENSILE
-978-8804642866@Il signore degli anelli@J.R.R. Tolkien@Fantasy@1955@1216
-978-8804678889@Cime tempestose@Emily Brontë@Romanzo gotico@1846@448
-978-1357902468@Travel Explorer@2010@72@MENSILE
+Rivista{codiceISBN='978-0987654321', titolo='National Geographic', annoPubblicazione=1830, numeroPagine=100, periodicita=MENSILE}
+Libro{codiceISBN='978-8804682565', titolo='Harry Potter e la pietra filosofale', autore='J.K. Rowling', genere='Fantasy', annoPubblicazione=1997, numeroPagine=336}
+Rivista{codiceISBN='978-5678901234', titolo='Science Quarterly', annoPubblicazione=2010, numeroPagine=80, periodicita=SEMESTRALE}
+Libro{codiceISBN='978-8804668231', titolo='Il codice da Vinci', autore='Dan Brown', genere='Thriller', annoPubblicazione=2003, numeroPagine=592}
+Libro{codiceISBN='978-8808180157', titolo='1984', autore='George Orwell', genere='Romanzo distopico', annoPubblicazione=1949, numeroPagine=328}
+Rivista{codiceISBN='978-2468135790', titolo='Tech Trends', annoPubblicazione=1999, numeroPagine=48, periodicita=MENSILE}
+Libro{codiceISBN='978-8804642866', titolo='Il signore degli anelli', autore='J.R.R. Tolkien', genere='Fantasy', annoPubblicazione=1955, numeroPagine=1216}
+Libro{codiceISBN='978-8804678889', titolo='Cime tempestose', autore='Emily Brontë', genere='Romanzo gotico', annoPubblicazione=1846, numeroPagine=448}
+Rivista{codiceISBN='978-1357902468', titolo='Travel Explorer', annoPubblicazione=2010, numeroPagine=72, periodicita=MENSILE}

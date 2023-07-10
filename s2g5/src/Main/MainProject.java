@@ -1,15 +1,10 @@
 package Main;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.Year;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,8 +66,6 @@ public class MainProject {
 		
 		salvaSuFile();
 		caricaDaFile();
-		
-		System.out.println(caricaDaFile());
 	
 
 		
@@ -104,7 +97,7 @@ public class MainProject {
 	    volumeTrovato.ifPresent(volume -> log.info("Al codice impostato corrisponde il volume " + volume.getTitolo()));
 
 	    if (volumeTrovato.isPresent() == false) {
-	        System.out.println("Nessun volume trovato con il codice ISBN " + codice);
+	    	System.out.println("Nessun volume trovato con il codice ISBN " + codice);
 	    }
 
 	    return volumeTrovato;
@@ -153,6 +146,16 @@ public class MainProject {
 	            archivioMap.put(rivista.getCodiceISBN(), rivista);
 	        }
 	    }
+	    
+	    File file = new File("doc/test.txt");
+	    StringBuilder content = new StringBuilder();
+	    for (Volume vol : archivioMap.values()) {
+	        content.append(vol.toString()).append("\n");
+	    }
+	    
+	    System.out.println("Contenuto da scrivere nel file:");
+	    System.out.println(content.toString());
+	    FileUtils.writeStringToFile(file, content.toString(), "UTF-8");
 
 	    log.info("Testo scritto su file " + file.getPath());
 	}
@@ -160,35 +163,39 @@ public class MainProject {
 	public static Map<String, Volume> caricaDaFile() throws IOException {
 	    Map<String, Volume> archivioMap = new HashMap<>();
 
+	    File file = new File("doc/test.txt");
 	    List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
 
 	    for (String line : lines) {
 	        String[] properties = line.split("@");
 
-	        if (properties.length == 6) {
+	        if (properties.length == 7) { 
 	            String codiceISBN = properties[0];
 	            String titolo = properties[1];
 	            String autore = properties[2];
 	            String genere = properties[3];
 	            Year annoPubblicazione = Year.parse(properties[4]);
 	            int numeroPagine = Integer.parseInt(properties[5]);
+	            String periodicitaString = properties[6]; 
 
-	            Volume volume = new Libro(codiceISBN, titolo, autore, genere, annoPubblicazione, numeroPagine);
-	            archivioMap.put(codiceISBN, volume);
-	        } else if (properties.length == 5) {
-	            String codiceISBN = properties[0];
-	            String titolo = properties[1];
-	            Year annoPubblicazione = Year.parse(properties[2]);
-	            int numeroPagine = Integer.parseInt(properties[3]);
-	            Periodicita periodicita = Periodicita.valueOf(properties[4]);
+	            Volume volume;
+	            if (periodicitaString.isEmpty()) {
+	                volume = new Libro(codiceISBN, titolo, autore, genere, annoPubblicazione, numeroPagine);
+	            } else {
+	                Periodicita periodicita = Periodicita.valueOf(periodicitaString);
+	                volume = new Rivista(codiceISBN, titolo, annoPubblicazione, numeroPagine, periodicita);
+	            }
 
-	            Volume volume = new Rivista(codiceISBN, titolo, annoPubblicazione, numeroPagine, periodicita);
 	            archivioMap.put(codiceISBN, volume);
+	            
+
+	            
 	        }
+	        
+            System.out.println(line);
 	    }
 
 	    return archivioMap;
 	}
-	
 	
 }
