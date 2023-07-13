@@ -38,16 +38,9 @@ public class JpaUtil {
 
 	public static void main(String[] args) {
 		
-        Evento e1 = new Evento("Evento 1", LocalDate.of(2023, 7, 15), "Descrizione evento 1", TipoEvento.PUBBLICO, 100, new Location("Luogo 1", "Roma"));
-        Evento e2 = new Evento("Evento 2", LocalDate.of(2023, 8, 1), "Descrizione evento 2", TipoEvento.PRIVATO, 50, new Location("Luogo 2", "Napoli"));
-        
-
-        try {
-			save(e1);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		
+		
 		}
 
 	}
 
-}
