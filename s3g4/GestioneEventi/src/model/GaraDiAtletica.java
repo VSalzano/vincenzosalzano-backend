@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -16,10 +17,10 @@ import classes.TipoEvento;
 @Entity
 public class GaraDiAtletica extends Evento {
 	
-	@ManyToOne
+	@ManyToMany
 	private Set<Persona> atleti;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Persona vincitore;
 	
 	public GaraDiAtletica() {}
