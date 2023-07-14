@@ -66,7 +66,9 @@ public class GestioneBiblioteca {
 		System.out.println(LibroDAO.ricercaPerTitolo("Il nome del vento"));
 		System.out.println(LibroDAO.ricercaPerAutore("Patrick Rothfuss"));
 		
+		System.out.println(PrestitoDAO.elementiInPrestito(1));
 		
+		System.out.println(PrestitoDAO.prestitiScaduti());
 		
 
 	}
