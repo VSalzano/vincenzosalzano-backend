@@ -85,5 +85,27 @@ public class RivistaDAO {
 		em.getTransaction().commit();
 		
 	}
+	
+	public static void cancellaRivista(String codiceISBN) throws SQLException {
+	    em.getTransaction().begin();
+
+	    try {
+	        String jpql = "DELETE FROM Rivista r WHERE r.codiceISBN = :codiceISBN";
+	        Query query = em.createQuery(jpql);
+	        query.setParameter("codiceISBN", codiceISBN);
+	        int deletedCount = query.executeUpdate();
+
+	        if (deletedCount > 0) {
+	            System.out.println("Libro cancellato");
+	        } else {
+	            System.out.println("Nessun risultato trovato con il codice " + codiceISBN);
+	        }
+
+	        em.getTransaction().commit();
+	    } catch (NoResultException e) {
+	        em.getTransaction().rollback();
+	        System.out.println("Nessun risultato trovato con il codice " + codiceISBN);
+	    }
+	}
 
 }

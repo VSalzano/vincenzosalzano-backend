@@ -91,7 +91,7 @@ public class LibroDAO {
 	public static Libro ricercaPerTitolo(String titolo) {
 	    boolean trovato = true;
 	    Query query = em.createNamedQuery("ricercaLPerTitolo");
-	    query.setParameter("titolo", titolo);
+	    query.setParameter("titolo","%"+titolo+"%");
 
 	    try {
 	        return (Libro) query.getSingleResult();
@@ -100,17 +100,32 @@ public class LibroDAO {
 	    }
 
 	    if (!trovato) {
-	        System.out.println("Nessun risultato trovato per il titolo: " + "%"+titolo+"%");
+	        System.out.println("Nessun risultato trovato per il titolo: " + titolo);
 	    }
 
 	    return null;
 	}
 	
-	public static void cancellaLibro(Libro l) throws SQLException {
-		em.getTransaction().begin();
-		em.remove(l);
-		em.getTransaction().commit();
-		
+	public static void cancellaLibro(String codiceISBN) throws SQLException {
+	    em.getTransaction().begin();
+
+	    try {
+	        String jpql = "DELETE FROM Libro l WHERE l.codiceISBN = :codiceISBN";
+	        Query query = em.createQuery(jpql);
+	        query.setParameter("codiceISBN", codiceISBN);
+	        int deletedCount = query.executeUpdate();
+
+	        if (deletedCount > 0) {
+	            System.out.println("Libro cancellato");
+	        } else {
+	            System.out.println("Nessun risultato trovato con il codice " + codiceISBN);
+	        }
+
+	        em.getTransaction().commit();
+	    } catch (NoResultException e) {
+	        em.getTransaction().rollback();
+	        System.out.println("Nessun risultato trovato con il codice " + codiceISBN);
+	    }
 	}
 	
 	

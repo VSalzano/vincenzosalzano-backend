@@ -26,22 +26,29 @@ public class GestioneBiblioteca {
 
 	public static void main(String[] args) {
 		
-		Libro l1 = new Libro("978-0123456789", "Il nome del vento", 2007, 662, "Patrick Rothfuss", "Fantasy");
+		Libro l1 = new Libro("978-0113436789", "Il nome del vento", 2007, 662, "Patrick Rothfuss", "Fantasy");
+		Libro l2 = new Libro("978-0451524935", "1984", 1949, 328, "George Orwell", "Dystopian Fiction");
 		Rivista r1 = new Rivista("123456789", "La Rivista", 2023, 50, Periodicita.MENSILE);
 		Utente u1 = new Utente("Mario", "Rossi", LocalDate.of(1990, 5, 15), 12345);
 
 		
+		
 		/* try {
-			LibroDAO.save(l1);
+			LibroDAO.save(l2);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} */
+		
+		
+		
+		/* 
 		
 		try {
 			RivistaDAO.save(r1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} */
+		} 
+		*/
 		
 		
 		Prestito p1 = new Prestito(UtenteDAO.getById(1), LibroDAO.getById(4), LocalDate.now());
@@ -61,14 +68,19 @@ public class GestioneBiblioteca {
 
 		
 		System.out.println(LibroDAO.ricercaPerIsbn("978-0123456789"));
-		System.out.println(LibroDAO.ricercaPerAnno(2007));
-		System.out.println(LibroDAO.ricercaPerAnno(2300));
+		System.out.println(LibroDAO.ricercaPerAnno(2023));
 		System.out.println(LibroDAO.ricercaPerTitolo("Il nome del vento"));
 		System.out.println(LibroDAO.ricercaPerAutore("Patrick Rothfuss"));
 		
 		System.out.println(PrestitoDAO.elementiInPrestito(1));
 		
 		System.out.println(PrestitoDAO.prestitiScaduti());
+		
+		/* try {
+			LibroDAO.cancellaLibro("978-0113436789");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} */
 		
 
 	}
