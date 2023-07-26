@@ -9,8 +9,8 @@ public class MenupizzeriaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MenupizzeriaApplication.class, args);
 		
-		GestioneMenu menu = new GestioneMenu();
-		menu.stampaMenu();
+//		GestioneMenu menu = new GestioneMenu();
+//		menu.stampaMenu();
 		
 	}
 

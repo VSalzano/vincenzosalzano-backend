@@ -31,7 +31,7 @@ public class GestioneMenu {
 		
 		System.out.println("Franchise");
 		
-		menu.getFranchise();
+		menu.getFranchise().forEach(d -> System.out.println(d.getMenuLine()));
 		
 		System.out.println("***** FINE *****");
 		

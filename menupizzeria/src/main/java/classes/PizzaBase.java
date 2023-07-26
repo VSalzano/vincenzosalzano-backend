@@ -1,5 +1,15 @@
 package classes;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class PizzaBase {
 	
 	private String name;
@@ -14,7 +24,7 @@ public class PizzaBase {
 	}
 
 	public String getMenuLine() {
-		return this.name + " - caloreis: " + this.calories + " - price: " + this.price;  
+		return this.name + " - calories: " + this.calories + " - price: " + this.price;  
 	}
 
 }
