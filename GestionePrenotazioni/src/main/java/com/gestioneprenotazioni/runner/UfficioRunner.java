@@ -62,13 +62,13 @@ public class UfficioRunner implements CommandLineRunner {
 		us.salvaPrenotazione(us.nuovaPrenotazione(LocalDate.now(), us.getPostazioneById(1), us.getUtenteById(1)));
 		us.salvaPrenotazione(us.nuovaPrenotazione(LocalDate.of(2023, 8, 15), us.getPostazioneById(10), us.getUtenteById(3)));
 		
-		//prenotazione sbagliata - Lo stesso utente fa due prenotazioni con la stessa data
+//		//prenotazione sbagliata - Lo stesso utente fa due prenotazioni con la stessa data
 		us.salvaPrenotazione(us.nuovaPrenotazione(LocalDate.of(2023, 8, 15), us.getPostazioneById(10), us.getUtenteById(3)));
 		
-		//prenotazione sbagliata - Un utente prova a prenotarsi per una postazione già piena nella data inserita
+//		//prenotazione sbagliata - Un utente prova a prenotarsi per una postazione già piena nella data inserita
 		us.salvaPrenotazione(us.nuovaPrenotazione(LocalDate.now(), us.getPostazioneById(1), us.getUtenteById(2)));
 		
-		//ricerca delle postazioni
+//		//ricerca delle postazioni
 		us.controllaPostazioni(TipoPostazione.PRIVATO, "Napoli");
 		
 	}

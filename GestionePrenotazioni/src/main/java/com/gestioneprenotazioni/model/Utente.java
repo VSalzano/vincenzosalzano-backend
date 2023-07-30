@@ -21,13 +21,13 @@ public class Utente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(unique=true)
+	@Column(unique=true, nullable=false)
 	private String username;
 	
 	@Column(name="nome_completo", nullable=false)
 	private String nomeCompleto;
 	
-	@Column(unique=true)
+	@Column(unique=true, nullable=false)
 	private String email;
 	
 
