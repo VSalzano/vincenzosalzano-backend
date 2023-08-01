@@ -27,4 +27,8 @@ public class UtenteService {
     public List<Utente> getAllUsers() {
         return (List<Utente>) utenteCrud.findAll();
     }
+    
+	public Utente getUtenteByID(Long id) {
+		return utenteCrud.findById(id).get();
+	}
 }
