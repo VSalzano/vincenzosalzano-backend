@@ -24,6 +24,10 @@ public class UtenteService {
         utenteCrud.save(u);
     }
     
+    public Utente creaUtente (Utente u) {
+    	return utenteCrud.save(u);
+    }
+    
     public List<Utente> getAllUsers() {
         return (List<Utente>) utenteCrud.findAll();
     }
