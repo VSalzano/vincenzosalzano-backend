@@ -31,6 +31,7 @@ public class UfficioService {
 	@Autowired PostazioneDAO postazioneCrud;
 	@Autowired EdificioDAO edificioCrud;
 	@Autowired PrenotazioneDAO prenotazioneCrud;
+
 	
 	public Utente nuovoUtente(String username, String nomeCompleto, String email) {
 		Utente u = utenteProvider.getObject();
