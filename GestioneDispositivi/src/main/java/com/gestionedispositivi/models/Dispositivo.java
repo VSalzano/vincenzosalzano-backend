@@ -3,13 +3,15 @@ package com.gestionedispositivi.models;
 import com.gestionedispositivi.enums.Stato;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_dispositivo", discriminatorType = DiscriminatorType.STRING)
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name="dispositivi")
 public class Dispositivo {
@@ -19,14 +21,24 @@ public class Dispositivo {
     private Long id;
     
     @Column(nullable = false)
-    private String marca;
+	protected String marca;
     
     @Column(nullable = false)
-    private String modello;
+    protected String modello;
     
 	@Column(name="sistema_operativo")
-    private String sistemaOperativo;
+    protected String sistemaOperativo;
     
     @Enumerated(EnumType.STRING)
-    private Stato stato;
+    protected Stato stato;
+
+	public Dispositivo(String marca, String modello, String sistemaOperativo, Stato stato) {
+		super();
+		this.marca = marca;
+		this.modello = modello;
+		this.sistemaOperativo = sistemaOperativo;
+		this.stato = stato;
+	}
+    
+    
 }

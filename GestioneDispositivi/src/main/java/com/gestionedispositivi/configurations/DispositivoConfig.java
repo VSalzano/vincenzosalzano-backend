@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import com.gestionedispositivi.enums.Stato;
 import com.gestionedispositivi.models.Laptop;
 import com.gestionedispositivi.models.Smartphone;
 import com.gestionedispositivi.models.Tablet;
@@ -13,20 +14,20 @@ public class DispositivoConfig {
 	
 	@Bean("laptopBean")
 	@Scope("prototype")
-	public Laptop nuovoLaptop() {
-		return new Laptop();
+	public Laptop nuovoLaptop(String marca, String modello, String sistemaOperativo, Stato stato, int memoriaRAM) {
+		return new Laptop(marca, modello, sistemaOperativo, stato, memoriaRAM);
 	}
 	
 	@Bean("tabletBean")
 	@Scope("prototype")
-	public Tablet nuovoTablet() {
-		return new Tablet();
+	public Tablet nuovoTablet(String marca, String modello, String sistemaOperativo, Stato stato, double dimensioneSchermo) {
+		return new Tablet(marca, modello, sistemaOperativo, stato, dimensioneSchermo);
 	}
 	
 	@Bean("smartphonetBean")
 	@Scope("prototype")
-	public Smartphone nuovoSmartphone() {
-		return new Smartphone();
+	public Smartphone nuovoSmartphone(String marca, String modello, String sistemaOperativo, Stato stato, int memoriaInternaGB) {
+		return new Smartphone(marca, modello, sistemaOperativo, stato, memoriaInternaGB);
 	}
 
 }
