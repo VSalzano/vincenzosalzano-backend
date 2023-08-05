@@ -1,5 +1,7 @@
 package com.gestionedispositivi.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +15,8 @@ import com.gestionedispositivi.models.Laptop;
 import com.gestionedispositivi.models.Smartphone;
 import com.gestionedispositivi.models.Tablet;
 import com.gestionedispositivi.repos.DispositivoRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class DispositivoService {
@@ -44,8 +48,12 @@ public class DispositivoService {
 		return s;
 	}
 	
+	public Dispositivo salvaDispositivo (Dispositivo d) {
+		return dr.save(d);
+	}
+	
 	public Laptop salvaLaptop(Laptop l) {
-			return dr.save(l);
+		return dr.save(l);
 	}
 	
 	public Tablet salvaTablet(Tablet t) {
@@ -54,6 +62,31 @@ public class DispositivoService {
 	
 	public Smartphone salvaSmartphone(Smartphone s) {
 		return dr.save(s);
+	}
+	
+	public List<Dispositivo> getAllDispositivi() {
+		return (List<Dispositivo>) dr.findAll();
+	}
+
+	public Dispositivo getById(Long id) {		
+		return dr.findById(id).get();
+	}
+
+	public String rimuoviDispositivo(Long id) {
+		Dispositivo d = getById(id);
+		dr.delete(d);
+		return "Dispositivo cancellato";
+	}
+	
+	public Dispositivo aggiornaDispositivo(Long id, Dispositivo dispositivo) {
+		if(!dr.existsById(id)) {
+			throw new EntityNotFoundException
+			("Il dispositivo non esiste");
+		}
+		if (id != dispositivo.getId()) {
+			throw new EntityNotFoundException ("Id e Dispositivo non corrispondono");
+		}
+		return dr.save(dispositivo);
 	}
 	
 	}
