@@ -25,28 +25,35 @@ public class DispositivoService {
 	
 	public Laptop creaLaptop(String marca, String modello, String sistemaOperativo, Stato stato, int memoriaRAM) {
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(DispositivoConfig.class);
-		Laptop l = (Laptop) appContext.getBean(marca, modello, sistemaOperativo, stato, memoriaRAM);
+		Laptop l = (Laptop) appContext.getBean("laptopBean", marca, modello, sistemaOperativo, stato, memoriaRAM);
 		appContext.close();
 		return l;
 	}
 	
 	public Dispositivo creaTablet(String marca, String modello, String sistemaOperativo, Stato stato, double dimensioneSchermo) {
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(DispositivoConfig.class);
-		Tablet t = (Tablet) appContext.getBean(marca, modello, sistemaOperativo, stato, dimensioneSchermo);
+		Tablet t = (Tablet) appContext.getBean("tabletBean", marca, modello, sistemaOperativo, stato, dimensioneSchermo);
 		appContext.close();
 		return t;
 	}
 	
 	public Dispositivo creaSmartphone(String marca, String modello, String sistemaOperativo, Stato stato, int memoriaInternaGB) {
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(DispositivoConfig.class);
-		Smartphone s = (Smartphone) appContext.getBean(marca, modello, sistemaOperativo, stato, memoriaInternaGB);
+		Smartphone s = (Smartphone) appContext.getBean("smartphoneBean", marca, modello, sistemaOperativo, stato, memoriaInternaGB);
 		appContext.close();
 		return s;
 	}
 	
-	public Dispositivo salvaDispositivo(Dispositivo d) {
-			return dr.save(d);
+	public Laptop salvaLaptop(Laptop l) {
+			return dr.save(l);
 	}
-
+	
+	public Tablet salvaTablet(Tablet t) {
+		return dr.save(t);
+	}
+	
+	public Smartphone salvaSmartphone(Smartphone s) {
+		return dr.save(s);
+	}
 	
 	}

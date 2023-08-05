@@ -24,7 +24,7 @@ public class DispositivoConfig {
 		return new Tablet(marca, modello, sistemaOperativo, stato, dimensioneSchermo);
 	}
 	
-	@Bean("smartphonetBean")
+	@Bean("smartphoneBean")
 	@Scope("prototype")
 	public Smartphone nuovoSmartphone(String marca, String modello, String sistemaOperativo, Stato stato, int memoriaInternaGB) {
 		return new Smartphone(marca, modello, sistemaOperativo, stato, memoriaInternaGB);

@@ -17,15 +17,13 @@ import lombok.Setter;
 public class Laptop extends Dispositivo {
 	
 
-	@Column(name="memoria_ram", nullable=false)
+	@Column(name="memoria_ram")
     private int memoriaRAM;
-	
+
 	public Laptop(String marca, String modello, String sistemaOperativo, Stato stato, int memoriaRAM) {
-		this.marca = marca;
-		this.modello = modello;
-		this.sistemaOperativo = sistemaOperativo;
-		this.stato = stato;
+		super(marca, modello, sistemaOperativo, stato);
 		this.memoriaRAM = memoriaRAM;
 	}
+	
 
 }

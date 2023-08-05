@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Tablet extends Dispositivo {
 	
 	
-	@Column(name="dimensioni_schermo", nullable=false)
+	@Column(name="dimensioni_schermo")
     private double dimensioneSchermo;
 
 	public Tablet(String marca, String modello, String sistemaOperativo, Stato stato, double dimensioneSchermo) {

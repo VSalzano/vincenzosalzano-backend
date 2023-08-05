@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Smartphone extends Dispositivo {
 	
-	@Column(name="memoria_interna_GB",nullable=false)
+	@Column(name="memoria_interna_GB")
     private int memoriaInternaGB;
 
 	public Smartphone(String marca, String modello, String sistemaOperativo, Stato stato, int memoriaInternaGB) {
