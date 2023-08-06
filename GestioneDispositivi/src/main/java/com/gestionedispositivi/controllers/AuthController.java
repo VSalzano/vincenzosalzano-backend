@@ -48,8 +48,7 @@ public class AuthController {
     
     // JSON inviato dal Client
     /*{
-        "name": "Vincenzo",
-        "lastname": "Salzano",
+        "name": "Vincenzo Salzano",
         "username": "Vsalzano",
         "email": "v.salzano@example.com",
         "password": "qwerty",

@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.gestionedispositivi.enums.ERole;
-import com.gestionedispositivi.models.UserRole;
+import com.gestionedispositivi.models.Role;
 import com.gestionedispositivi.repos.RoleRepository;
 import com.gestionedispositivi.repos.UserRepository;
 import com.gestionedispositivi.services.AuthService;
@@ -26,42 +26,42 @@ public class AuthRunner implements ApplicationRunner {
 	@Autowired PasswordEncoder passwordEncoder;
 	@Autowired AuthService authService;
 	
-	private Set<UserRole> adminRole;
-	private Set<UserRole> moderatorRole;
-	private Set<UserRole> userRole;
+	private Set<Role> adminRole;
+	private Set<Role> moderatorRole;
+	private Set<Role> role;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Run...");
 		// Da lanciare solo la prima volta
-		//setRoleDefault();
+		setRoleDefault();
 		
 	}
 	
 	private void setRoleDefault() {
-		UserRole admin = new UserRole();
+		Role admin = new Role();
 		admin.setRoleName(ERole.ROLE_ADMIN);
 		roleRepository.save(admin);
 		
-		UserRole user = new UserRole();
+		Role user = new Role();
 		user.setRoleName(ERole.ROLE_USER);
 		roleRepository.save(user);
 		
-		UserRole moderator = new UserRole();
+		Role moderator = new Role();
 		moderator.setRoleName(ERole.ROLE_MODERATOR);
 		roleRepository.save(moderator);
 		
-		adminRole = new HashSet<UserRole>();
+		adminRole = new HashSet<Role>();
 		adminRole.add(admin);
 		adminRole.add(moderator);
 		adminRole.add(user);
 		
-		moderatorRole = new HashSet<UserRole>();
+		moderatorRole = new HashSet<Role>();
 		moderatorRole.add(moderator);
 		moderatorRole.add(user);
 		
-		userRole = new HashSet<UserRole>();
-		userRole.add(user);
+		role = new HashSet<Role>();
+		role.add(user);
 	}
 
 }

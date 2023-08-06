@@ -3,12 +3,12 @@ package com.gestionedispositivi.repos;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.gestionedispositivi.enums.ERole;
-import com.gestionedispositivi.models.UserRole;
+import com.gestionedispositivi.models.Role;
 
 import java.util.Optional;
 
-public interface RoleRepository extends JpaRepository<UserRole, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
     
-	Optional<UserRole> findByRoleName(ERole roleName);
+	Optional<Role> findByRoleName(ERole roleName);
 
 }

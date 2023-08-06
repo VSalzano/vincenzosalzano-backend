@@ -11,10 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 import com.gestionedispositivi.enums.ERole;
 import com.gestionedispositivi.exceptions.MyAPIException;
 import com.gestionedispositivi.models.User;
-import com.gestionedispositivi.models.UserRole;
+import com.gestionedispositivi.models.Role;
 import com.gestionedispositivi.payload.LoginDto;
 import com.gestionedispositivi.payload.RegisterDto;
 import com.gestionedispositivi.repos.RoleRepository;
@@ -73,21 +74,20 @@ public class AuthServiceImpl implements AuthService {
         }
 
         User user = new User();
-        user.setNome(registerDto.getName());
-        user.setCognome(registerDto.getName());
+        user.setName(registerDto.getName());
         user.setUsername(registerDto.getUsername());
         user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 
-        Set<UserRole> roles = new HashSet<>();
+        Set<Role> roles = new HashSet<>();
         
         if(registerDto.getRoles() != null) {
 	        registerDto.getRoles().forEach(role -> {
-	        	UserRole userRole = roleRepository.findByRoleName(getRole(role)).get();
+	        	Role userRole = roleRepository.findByRoleName(getRole(role)).get();
 	        	roles.add(userRole);
 	        });
         } else {
-        	UserRole userRole = roleRepository.findByRoleName(ERole.ROLE_USER).get();
+        	Role userRole = roleRepository.findByRoleName(ERole.ROLE_USER).get();
         	roles.add(userRole);
         }
         
