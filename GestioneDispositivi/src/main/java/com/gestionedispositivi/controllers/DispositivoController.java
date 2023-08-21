@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gestionedispositivi.services.DispositivoService;
 import com.gestionedispositivi.models.Dispositivo;
-import com.gestionedispositivi.models.Laptop;
-import com.gestionedispositivi.models.Smartphone;
-import com.gestionedispositivi.models.Tablet;
 
 @RestController
 @RequestMapping("/api/dispositivi")
